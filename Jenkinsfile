@@ -29,8 +29,8 @@ pipeline {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'jenkins-ecr']]) {
                     sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_URL"
-                    sh "docker tag spring-petclinic:latest $ECR_URL/spring-petclinic:latest"
-                    sh "docker push $ECR_URL/spring-petclinic:latest"
+                    sh "sudo docker tag spring-petclinic:latest $ECR_URL/spring-petclinic:latest"
+                    sh "sudo docker push $ECR_URL/spring-petclinic:latest"
                 }
             }
         }
