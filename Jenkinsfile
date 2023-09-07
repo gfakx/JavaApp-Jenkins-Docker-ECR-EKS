@@ -13,7 +13,7 @@ pipeline {
                         $class: 'GitSCM',
                         branches: [[name: 'main']],
                         userRemoteConfigs: [[url: 'https://github.com/gfakx/JavaApp-Jenkins-Docker-ECR-EKS.git']]
-                        sh "ls"
+
                     ])
                 }
             }
