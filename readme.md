@@ -41,7 +41,7 @@ img 2.c
 
 
 ## Iteration 3:  Push to ECR
-###Objective:
+### Objective:
 Migrate Docker images to AWS ECR.
 - **Create an ECR Repository**: `aws ecr create-repository --repository-name [repository_name]`
 - **Authorize Docker with ECR:**: `aws ecr get-login-password --region [region] | docker login --username AWS --password-stdin [account_id].dkr.ecr.[region].amazonaws.com`
