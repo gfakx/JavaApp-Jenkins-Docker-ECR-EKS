@@ -38,8 +38,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                withCredentials([file(credentialsId: 'eks-kubeconfig', variable: 'KUBECONFIG')]) {
-                 sh 'kubectl apply -f spring-petclinic-deployment.yaml'
-                 sh 'kubectl apply -f spring-petclinic-service.yaml'
+                 sh 'kubectl apply -f spring-petclinic-deployment.yaml -v=9'
+
         }
             }
         }
