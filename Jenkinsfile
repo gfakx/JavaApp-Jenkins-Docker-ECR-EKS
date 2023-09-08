@@ -37,11 +37,16 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-               withCredentials([file(credentialsId: 'eks-kubeconfig', variable: 'KUBECONFIG')]) {
-                 sh 'kubectl apply -f spring-petclinic-deployment.yaml -v=9'
-
-        }
+                withCredentials([file(credentialsId: 'eks-kubeconfig', variable: 'KUBECONFIG'),
+                         string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY'),
+                         string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_KEY')]) {
+                sh '''
+                export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY
+                export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
+                kubectl apply -f spring-petclinic-deployment.yaml -v=9
+                '''
             }
+         }
         }
     }
 }
