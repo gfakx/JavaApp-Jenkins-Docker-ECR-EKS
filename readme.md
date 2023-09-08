@@ -56,7 +56,7 @@ img 3.b
 ## Iteration 4:  Setting up the Kubernetes Cluster with Terraform
 
 - **Locate `main.tf` in root directory**
-- Define the Terraform configurations for setting up an EKS cluster.
+- Adjust Terraform configurations to set up the EKS cluster.
 - **Initiate Terraform**:
 ```bash
 terraform init 
